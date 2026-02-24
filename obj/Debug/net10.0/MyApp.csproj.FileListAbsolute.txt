@@ -1,0 +1,4 @@
+D:\Depi\c#\Task2\MyApp\obj\Debug\net10.0\MyApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Depi\c#\Task2\MyApp\obj\Debug\net10.0\MyApp.AssemblyInfoInputs.cache
+D:\Depi\c#\Task2\MyApp\obj\Debug\net10.0\MyApp.AssemblyInfo.cs
+D:\Depi\c#\Task2\MyApp\obj\Debug\net10.0\MyApp.csproj.CoreCompileInputs.cache

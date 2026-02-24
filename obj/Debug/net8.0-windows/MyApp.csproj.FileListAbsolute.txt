@@ -1,0 +1,14 @@
+D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\MyApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\MyApp.AssemblyInfoInputs.cache
+D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\MyApp.AssemblyInfo.cs
+D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\MyApp.csproj.CoreCompileInputs.cache
+D:\Depi\c#\Task2\MyApp\bin\Debug\net8.0-windows\MyApp.exe
+D:\Depi\c#\Task2\MyApp\bin\Debug\net8.0-windows\MyApp.deps.json
+D:\Depi\c#\Task2\MyApp\bin\Debug\net8.0-windows\MyApp.runtimeconfig.json
+D:\Depi\c#\Task2\MyApp\bin\Debug\net8.0-windows\MyApp.dll
+D:\Depi\c#\Task2\MyApp\bin\Debug\net8.0-windows\MyApp.pdb
+D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\MyApp.dll
+D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\refint\MyApp.dll
+D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\MyApp.pdb
+D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\MyApp.genruntimeconfig.cache
+D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\ref\MyApp.dll
