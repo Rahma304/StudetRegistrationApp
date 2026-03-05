@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -15,18 +16,22 @@ namespace StudentRegistrationApp
             InitializeComponent();
             _dbContext = new SchoolDbContext();
             RefreshGrid();
+
+            // ربط الأحداث
+            dgvStudents.CellClick += dgvStudents_CellClick;
+            btnAdd.Click += btnAdd_Click;
+            btnUpdate.Click += btnUpdate_Click;
+            btnDelete.Click += btnDelete_Click;
+            btnBrowse.Click += btnBrowse_Click;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog())
+            using OpenFileDialog ofd = new OpenFileDialog { Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp" };
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
-                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    _currentImageData = File.ReadAllBytes(ofd.FileName);
-                    DisplayImage(_currentImageData);
-                }
+                _currentImageData = File.ReadAllBytes(ofd.FileName);
+                DisplayImage(_currentImageData);
             }
         }
 
@@ -34,54 +39,62 @@ namespace StudentRegistrationApp
         {
             if (imageData != null && imageData.Length > 0)
             {
-                using (MemoryStream ms = new MemoryStream(imageData))
-                {
-                    picStudent.Image = Image.FromStream(ms);
-                    picStudent.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
+                using MemoryStream ms = new MemoryStream(imageData);
+                picStudent.Image = Image.FromStream(ms);
             }
-            else
-            {
-                picStudent.Image = null;
-            }
+            else picStudent.Image = null;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var newStudent = new Student
+            if (!int.TryParse(txtId.Text, out int id)) { MessageBox.Show("من فضلك ادخلي Id صحيح"); return; }
+            var student = new Student
             {
-                Id = int.Parse(txtId.Text),
+                Id = id,
                 Name = txtName.Text,
                 ClassName = txtClass.Text,
                 Age = int.Parse(txtAge.Text),
                 ImageData = _currentImageData
             };
-            _dbContext.AddStudent(newStudent);
+            _dbContext.AddStudent(student);
             RefreshGrid();
             ClearFields();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (!int.TryParse(txtId.Text, out int id)) { MessageBox.Show("من فضلك اختاري طالب صحيح للتعديل"); return; }
             var updatedStudent = new Student
             {
-                Id = int.Parse(txtId.Text),
+                Id = id,
                 Name = txtName.Text,
                 ClassName = txtClass.Text,
                 Age = int.Parse(txtAge.Text),
                 ImageData = _currentImageData
             };
-            _dbContext.UpdateStudent(updatedStudent);
+            _dbContext.UpdateStudentWithImageCheck(updatedStudent);
             RefreshGrid();
             ClearFields();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(txtId.Text);
+            if (!int.TryParse(txtId.Text, out int id)) { MessageBox.Show("من فضلك اختاري طالب صحيح للحذف"); return; }
             _dbContext.DeleteStudent(id);
             RefreshGrid();
             ClearFields();
+        }
+
+        private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            var row = dgvStudents.Rows[e.RowIndex];
+            txtId.Text = row.Cells["Id"].Value.ToString();
+            txtName.Text = row.Cells["Name"].Value.ToString();
+            txtClass.Text = row.Cells["ClassName"].Value.ToString();
+            txtAge.Text = row.Cells["Age"].Value.ToString();
+            _currentImageData = row.Cells["ImageData"].Value as byte[];
+            DisplayImage(_currentImageData);
         }
 
         private void RefreshGrid()
@@ -92,29 +105,10 @@ namespace StudentRegistrationApp
                 dgvStudents.Columns["ImageData"].Visible = false;
         }
 
-        private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                var row = dgvStudents.Rows[e.RowIndex];
-                txtId.Text = row.Cells["Id"].Value.ToString();
-                txtName.Text = row.Cells["Name"].Value.ToString();
-                txtClass.Text = row.Cells["ClassName"].Value.ToString();
-                txtAge.Text = row.Cells["Age"].Value.ToString();
-
-                _currentImageData = row.Cells["ImageData"].Value as byte[];
-                DisplayImage(_currentImageData);
-            }
-        }
-
         private void ClearFields()
         {
-            txtId.Clear();
-            txtName.Clear();
-            txtClass.Clear();
-            txtAge.Clear();
-            picStudent.Image = null;
-            _currentImageData = null;
+            txtId.Clear(); txtName.Clear(); txtClass.Clear(); txtAge.Clear();
+            picStudent.Image = null; _currentImageData = null;
         }
     }
 }

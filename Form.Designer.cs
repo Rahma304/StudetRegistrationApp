@@ -1,3 +1,4 @@
+
 namespace StudentRegistrationApp
 {
     partial class Form1
@@ -23,66 +24,95 @@ namespace StudentRegistrationApp
 
         private void InitializeComponent()
         {
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtAge = new System.Windows.Forms.TextBox();
-            this.txtClass = new System.Windows.Forms.TextBox();
-            this.picStudent = new System.Windows.Forms.PictureBox();
-            this.dgvStudents = new System.Windows.Forms.DataGridView();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.picStudent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.SuspendLayout();
-            
-            // Controls properties
-            this.txtId.Location = new System.Drawing.Point(20, 20);
-            this.txtName.Location = new System.Drawing.Point(140, 20);
-            this.txtAge.Location = new System.Drawing.Point(310, 20);
-            this.txtClass.Location = new System.Drawing.Point(380, 20);
-            this.picStudent.Location = new System.Drawing.Point(500, 20);
-            this.picStudent.Size = new System.Drawing.Size(100, 100);
-            this.picStudent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dgvStudents.Location = new System.Drawing.Point(20, 150);
-            this.dgvStudents.Size = new System.Drawing.Size(580, 200);
 
-            this.btnAdd.Location = new System.Drawing.Point(20, 350);
-            this.btnAdd.Size = new System.Drawing.Size(75, 30);
-            this.btnAdd.Text = "Add";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // ----------------- Controls -----------------
+            txtId = new System.Windows.Forms.TextBox();
+            txtName = new System.Windows.Forms.TextBox();
+            txtAge = new System.Windows.Forms.TextBox();
+            txtClass = new System.Windows.Forms.TextBox();
+            picStudent = new System.Windows.Forms.PictureBox();
+            dgvStudents = new System.Windows.Forms.DataGridView();
+            btnAdd = new System.Windows.Forms.Button();
+            btnUpdate = new System.Windows.Forms.Button();
+            btnDelete = new System.Windows.Forms.Button();
+            btnBrowse = new System.Windows.Forms.Button();
 
-            this.btnUpdate.Location = new System.Drawing.Point(110, 350);
-            this.btnUpdate.Size = new System.Drawing.Size(75, 30);
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // ----------------- Panel for Inputs -----------------
+            System.Windows.Forms.Panel panelInputs = new System.Windows.Forms.Panel();
+            panelInputs.Location = new System.Drawing.Point(10, 10);
+            panelInputs.Size = new System.Drawing.Size(300, 400);
+            panelInputs.BackColor = System.Drawing.Color.LightGray;
 
-            this.btnDelete.Location = new System.Drawing.Point(200, 350);
-            this.btnDelete.Size = new System.Drawing.Size(75, 30);
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // TextBoxes
+            txtId.Location = new System.Drawing.Point(20, 20);
+            txtId.Width = 250;
+            txtId.PlaceholderText = "Student ID";
 
-            this.btnBrowse.Location = new System.Drawing.Point(500, 130);
-            this.btnBrowse.Size = new System.Drawing.Size(100, 30);
-            this.btnBrowse.Text = "Browse";
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            txtName.Location = new System.Drawing.Point(20, 60);
+            txtName.Width = 250;
+            txtName.PlaceholderText = "Name";
 
-            // Form properties
-            this.ClientSize = new System.Drawing.Size(620, 400);
-            this.Controls.Add(this.txtId);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.txtAge);
-            this.Controls.Add(this.txtClass);
-            this.Controls.Add(this.picStudent);
-            this.Controls.Add(this.dgvStudents);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnBrowse);
+            txtAge.Location = new System.Drawing.Point(20, 100);
+            txtAge.Width = 250;
+            txtAge.PlaceholderText = "Age";
+
+            txtClass.Location = new System.Drawing.Point(20, 140);
+            txtClass.Width = 250;
+            txtClass.PlaceholderText = "Class";
+
+            // PictureBox
+            picStudent.Location = new System.Drawing.Point(50, 180);
+            picStudent.Size = new System.Drawing.Size(200, 150);
+            picStudent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            picStudent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+
+            // Buttons
+            btnAdd.Location = new System.Drawing.Point(20, 340);
+            btnAdd.Size = new System.Drawing.Size(60, 30);
+            btnAdd.Text = "Add";
+            btnAdd.BackColor = System.Drawing.Color.LightBlue;
+
+            btnUpdate.Location = new System.Drawing.Point(90, 340);
+            btnUpdate.Size = new System.Drawing.Size(60, 30);
+            btnUpdate.Text = "Update";
+            btnUpdate.BackColor = System.Drawing.Color.LightGreen;
+
+            btnDelete.Location = new System.Drawing.Point(160, 340);
+            btnDelete.Size = new System.Drawing.Size(60, 30);
+            btnDelete.Text = "Delete";
+            btnDelete.BackColor = System.Drawing.Color.OrangeRed;
+
+            btnBrowse.Location = new System.Drawing.Point(230, 340);
+            btnBrowse.Size = new System.Drawing.Size(60, 30);
+            btnBrowse.Text = "Browse";
+            btnBrowse.BackColor = System.Drawing.Color.LightYellow;
+
+            // Add controls to panel
+            panelInputs.Controls.Add(txtId);
+            panelInputs.Controls.Add(txtName);
+            panelInputs.Controls.Add(txtAge);
+            panelInputs.Controls.Add(txtClass);
+            panelInputs.Controls.Add(picStudent);
+            panelInputs.Controls.Add(btnAdd);
+            panelInputs.Controls.Add(btnUpdate);
+            panelInputs.Controls.Add(btnDelete);
+            panelInputs.Controls.Add(btnBrowse);
+
+            // DataGridView
+            dgvStudents.Location = new System.Drawing.Point(320, 10);
+            dgvStudents.Size = new System.Drawing.Size(550, 380);
+            dgvStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dgvStudents.RowTemplate.Height = 30;
+            dgvStudents.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+
+            // Form
+            this.ClientSize = new System.Drawing.Size(880, 420);
+            this.Controls.Add(panelInputs);
+            this.Controls.Add(dgvStudents);
             this.Text = "Student Registration App";
-            ((System.ComponentModel.ISupportInitialize)(this.picStudent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
+            this.BackColor = System.Drawing.Color.White;
+
             this.ResumeLayout(false);
             this.PerformLayout();
         }

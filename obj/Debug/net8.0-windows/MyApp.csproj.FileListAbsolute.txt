@@ -12,3 +12,4 @@ D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\refint\MyApp.dll
 D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\MyApp.pdb
 D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\MyApp.genruntimeconfig.cache
 D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\ref\MyApp.dll
+D:\Depi\c#\Task2\MyApp\obj\Debug\net8.0-windows\MyApp.sourcelink.json
