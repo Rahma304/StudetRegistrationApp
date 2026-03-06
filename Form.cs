@@ -17,8 +17,7 @@ namespace StudentRegistrationApp
             _dbContext = new SchoolDbContext();
             RefreshGrid();
 
-            // ربط الأحداث
-            dgvStudents.CellClick += dgvStudents_CellClick;
+            dgvStudents.CellClick += studentsGrid_CellClick;
             btnAdd.Click += btnAdd_Click;
             btnUpdate.Click += btnUpdate_Click;
             btnDelete.Click += btnDelete_Click;
@@ -47,7 +46,7 @@ namespace StudentRegistrationApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtId.Text, out int id)) { MessageBox.Show("من فضلك ادخلي Id صحيح"); return; }
+            if (!int.TryParse(txtId.Text, out int id)) { MessageBox.Show("  Invalid Id  "); return; }
             var student = new Student
             {
                 Id = id,
@@ -63,7 +62,7 @@ namespace StudentRegistrationApp
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtId.Text, out int id)) { MessageBox.Show("من فضلك اختاري طالب صحيح للتعديل"); return; }
+            if (!int.TryParse(txtId.Text, out int id)) { MessageBox.Show("Select a valid student first"); return; }
             var updatedStudent = new Student
             {
                 Id = id,
@@ -72,20 +71,20 @@ namespace StudentRegistrationApp
                 Age = int.Parse(txtAge.Text),
                 ImageData = _currentImageData
             };
-            _dbContext.UpdateStudentWithImageCheck(updatedStudent);
+            _dbContext.UpdateStudent(updatedStudent);
             RefreshGrid();
             ClearFields();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtId.Text, out int id)) { MessageBox.Show("من فضلك اختاري طالب صحيح للحذف"); return; }
+            if (!int.TryParse(txtId.Text, out int id)) { MessageBox.Show("Select a valid student to delete"); return; }
             _dbContext.DeleteStudent(id);
             RefreshGrid();
             ClearFields();
         }
 
-        private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void studentsGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
             var row = dgvStudents.Rows[e.RowIndex];
